@@ -3,6 +3,41 @@ This is a future project.
 Below are internal notes that .... well if you want to read them go right ahead. I want to journal the concept so that when I am ready to build it I can see the architecture.
 
 
+More was figured out and the concept should be fully documented.
+
+On setup there are 3 collections made
+A used shapes collection of shapeIDs
+A 2d collection of all frames and a collection of the shapeIDs per frame
+a 2d collection of all frames and a SNAPSHOT collection of the shape IDs per time frame. (added)
+A 2d collection of all shapes in the scene using a class
+The class holds the properties: type, left, top, rotation, height, width, and also visibility
+Every time a frame is recorded on the selected shape, EVERY SINGLE frame is updated. As the frames are checked the 2nd collection is reviewed.
+If a shape ID is found then the disbursment stops.
+This means that every single time ANY Kind of animation is done on a shape then all 6 properties are updated. They are not necessarily applied though that goes with the type.
+The type is 1, 2, 3, 4, 13, 23
+1 = Movement only, 2 = Scale (movement included), 3 = Show an item only, 4 = Hide an item, 13 = Move an item but show it on that frame from being hidden
+23 = same as 13 but with scale included.
+
+When scrubbing frames
+THe only way I see this working is when the frame is selected then ALL shapes that had an animation and procesed, The current properites of each shape
+will need to be looked at and there will be some that dont need to move but that is where the checks come in.
+For this reason we need to hold on to the visibility every frame. (updated above)
+
+When a frame is recorded the full customXML parts is rebuilt and saved.
+When preparing for slide show then an extremely clean collection is created that is read exactly.
+
+As mentioned in the notes below. The pose library and switchboard are also part.  The switchboard will handle visibility
+
+AT this point.....  Is the 2nd collection needed? actually.   I think a 3rd collection is in line. (updated above)
+
+These collections work off keys and will work with specific functions that error probe and try to add keys or check their existence. 
+This is very fast and has passed several tests.
+
+This can be started when Label CAffeine is complete and Swift Select. Both will be needed to finish out this one.
+
+
+There are other notes below but they could be very outdated from the concepts above. 
+
 talked with Gemini and Copilot to quickly get ideas transcribed. Asked for summary. Below
 
 
