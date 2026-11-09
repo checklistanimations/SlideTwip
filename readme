@@ -5,6 +5,67 @@ There have been other working names including FBF, Slide Flick, Frames Per Slide
 Below are internal notes that .... well if you want to read them go right ahead. I want to journal the concept so that when I am ready to build it I can see the architecture.
 
 
+
+Slide Twip Notes
+
+Ok..  the display
+
+show left, top, rotation, height, width, Outline, Visibility
+On any selected item. Probably not visibility
+When you select it, any kind of animation data for that frame is displayed as well.
+
+3 record types. YES 3
+* Position: the normal, bread and butter, left, top and rotation. Can do nearly everything with this
+* Scale: Woof, We wanted it, we didnt want it. Now we must have it. Height and Width and and a postion is written as well
+* Outline: Brand new. We need it. Single shapes, simple. Groups.....  If a group is selected with multiple line widths, we simply grey out the line width record. Add a ? next to it. Tell the user the shape that does not qualify. Recording line width records only that.
+
+'lets skip camera for a moment
+
+We need MORE collections.
+We need Pos Frames members.
+scale frames members
+outline frames members.
+Visibility frames members.
+
+All scale applied first, then pos applied, outline whenver.
+
+new frame pull scale members
+123, 124
+process the changes in the DATA.
+the DATA stores it all.  Has to.
+so a shape holds the following
+collection item 123
+123, 12.5, 5, 0, 145.45, 56, 1.2, 1
+id, left, top, rotation, height, width, outline, visibility
+We also store the old values of each.
+so we have to run all 4 of them. 
+
+
+lets look at the order of animation types and the order
+Camera Scale (zoom)
+Camera Postion and Rotation
+Base Scale
+Base Position
+Child Scale
+Child Position
+Base and Child Outline
+Base and Child Visibility
+
+basically. we need more collections.
+right now its a collection for every frame. that still might be ok.
+But then you need a collection for every type.
+Then using the concepts of members per frame we should still be able to walk through what to playback.
+Now we have the order figured out.   maybe.
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+
 More was figured out and the concept should be fully documented.
 
 On setup there are 3 collections made
